@@ -9,13 +9,25 @@
 <h2>KnjigeTabela</h2>
 
 <table class="table table-responsive table-striped">
+    <tr>
+        <th>Naslov</th>
+        <th>Inv. Broj</th>
+        <th>Pisac</th>
+        <th>God. Izd.</th>
+        <th>Mesto izd.</th>
+        <th></th>
+    </tr>
     @foreach (var knjiga in Model)
     {
-        <tr>
-            <td>@knjiga.Naslov</td>
-            <td>@knjiga.Pisac</td>
-            <td><a href="/knjiga/izmeni/@knjiga.KnjigaId" class="btn btn-primary">Izmeni</a></td>
-        </tr>   
+    
+    <tr>
+        <td>@knjiga.Naslov</td>
+        <td>@knjiga.InventarniBroj</td>
+        <td>@knjiga.Pisac</td>
+        <td>@knjiga.GodinaIzdavanja</td>
+        <td>@knjiga.MestoIzdavanja</td>
+        <td><a href="/knjiga/izmeni/@knjiga.KnjigaId" class="btn btn-primary">Izmeni</a></td>
+    </tr>   
     }
 </table>
 

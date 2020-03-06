@@ -7,8 +7,9 @@
 
 <h2>NovaKnjiga</h2>
 
-@using (Html.BeginForm("Izmeni","knjiga",FormMethod.Post))
+@using (Html.BeginForm("Izmeni","knjiga", FormMethod.Post))
 {
+    @Html.HiddenFor(a=> a.KnjigaId)
     <table>
         <tr>
             <td>Naslov knjige</td>

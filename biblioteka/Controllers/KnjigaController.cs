@@ -40,6 +40,7 @@ namespace WebApplication1.Controllers
             knjiga.InventarniBroj = km.InventarniBroj;
             knjiga.Naslov = km.Naslov;
             knjiga.Pisac = km.Pisac;
+            knjiga.GodinaIzdavanja = km.GodinaIzdavanja;
 
             bdb.SaveChanges();
 
