@@ -180,9 +180,12 @@
     <Content Include="Views\Knjiga\Index.cshtml" />
     <Content Include="Views\Ucenik\Index.cshtml" />
     <Content Include="Views\Ucenik\Create.cshtml" />
+    <Content Include="Views\Knjiga\Delete.cshtml" />
+    <Content Include="Views\Knjiga\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Ucenikk\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

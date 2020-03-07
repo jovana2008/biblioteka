@@ -1,81 +1,65 @@
-﻿@using WebApplication1.Models
-@model ICollection<KnjigaModel>
+﻿@model IEnumerable<WebApplication1.Models.KnjigaModel>
 
 @{
-    ViewBag.Title = "KnjigeTabela";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>KnjigeTabela</h2>
+<h2>Index</h2>
 
-<input class="input-sm" type="text" id="knjiga_search" onkeyup="myFunction()" placeholder="Trazi..." title="Type in a name">
-<input class="radio-inline" type="radio" id="check1" name="radio"> Inventarnom broju
-<input class="radio-inline" type="radio" id="check2" name="radio"> Piscu
-<input class="radio-inline" type="radio" id="check3" checked="checked" name="radio"> Naslovu dela
-<input class="radio-inline" type="radio" id="check4" name="radio"> Godini izdavanja
-<input class="radio-inline" type="radio" id="check5" name="radio"> Mestu izdavanja
-
-<table class="table table-responsive table-striped" id="knjiga_table">
+<a href="/Knjiga/Create" class="btn btn-warning">Dodaj novu knjigu</a>
+<table class="table">
     <tr>
-        <th>Invertarni Broj</th>
-        <th>Pisac</th>
-        <th>Naslov Dela</th>
-        <th>Godina Izdavanja</th>
-        <th>Mesto Izdavanja</th>
-        <th>#</th>
+        <th>
+            @Html.DisplayNameFor(model => model.InventarniBroj)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pisac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Naslov)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GodinaIzdavanja)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MestoIzdavanja)
+        </th>
+        <th>
+        </th>
+        <th>
+        </th>
+        <th>
+        </th>
     </tr>
-    @foreach (var knjiga in Model)
-    {
-        <tr>
-            <td>@knjiga.InventarniBroj</td>
-            <td>@knjiga.Pisac</td>
-            <td>@knjiga.Naslov</td>
-            <td>@knjiga.GodinaIzdavanja</td>
-            <td>@knjiga.MestoIzdavanja</td>
-            <td><a href="/knjiga/izmeni/@knjiga.KnjigaId" class="btn btn-primary">Izmeni</a></td>
-        </tr>
-    }
-</table>
 
-<script>
-    function myFunction() {
-        var check1 = document.getElementById("check1");
-        var check2 = document.getElementById("check2");
-        var check3 = document.getElementById("check3");
-        var check4 = document.getElementById("check4");
-        var check5 = document.getElementById("check5");
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("knjiga_search");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("knjiga_table");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            if (check1.checked == true) {
-                td = tr[i].getElementsByTagName("td")[0];
-            }
-            else if (check2.checked == true) {
-                td = tr[i].getElementsByTagName("td")[1];
-            }
-            else if (check3.checked == true) {
-                td = tr[i].getElementsByTagName("td")[2];
-            }
-            else if (check4.checked == true) {
-                td = tr[i].getElementsByTagName("td")[3];
-            }
-            else if (check5.checked == true) {
-                td = tr[i].getElementsByTagName("td")[4];
-            }
-            else {
-                td = tr[i].getElementsByTagName("td")[2]
-            }
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    }
-</script>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.InventarniBroj)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pisac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naslov)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GodinaIzdavanja)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MestoIzdavanja)
+        </td>
+        <td>
+            <a href="/Knjiga/Izmeni/@item.KnjigaId" class="btn btn-warning">Edit</a>
+        </td>
+        <td>
+            <a href="/Knjiga/Details/@item.KnjigaId" class="btn btn-primary">Details</a>
+        </td>
+        <td>
+            <a href="/Knjiga/Delete/@item.KnjigaId" class="btn btn-danger">Delete</a>
+        </td>
+    </tr>
+}
+
+</table>

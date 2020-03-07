@@ -7,9 +7,9 @@
 
 <h2>View</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
+<a href="/Ucenik/Create" class="btn btn-warning">Dodaj novog ucenika</a>
+
 <table class="table">
     <tr>
         <th>
@@ -42,41 +42,46 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Prezime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GodinaRodjenja)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BrojUDnevniku)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Razred)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Odeljenje)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Adresa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Telefon)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.UcenikID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.UcenikID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.UcenikID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prezime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GodinaRodjenja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrojUDnevniku)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Razred)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Odeljenje)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefon)
+            </td>
+            <td>
+                <a href="/Ucenik/Edit" class="btn btn-warning">Edit</a>
+            </td>
+            <td>
+                <a href="/Ucenik/Details" class="btn btn-primary">Details</a>
+            </td>
+            <td>
+                <a href="/Ucenik/Delete" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
 
 </table>
