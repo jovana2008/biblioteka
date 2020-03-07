@@ -176,8 +176,10 @@
     <Content Include="Views\Home\Skola.cshtml" />
     <Content Include="Views\profil\ja.cshtml" />
     <Content Include="Views\Knjiga\Izmeni.cshtml" />
-    <Content Include="Views\Ucenik\NoviUcenik.cshtml" />
+    <Content Include="Views\Ucenik\Izmeni.cshtml" />
     <Content Include="Views\Knjiga\Index.cshtml" />
+    <Content Include="Views\Ucenik\Index.cshtml" />
+    <Content Include="Views\Ucenik\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
