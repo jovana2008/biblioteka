@@ -133,6 +133,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BibliotekaDB.cs" />
+    <Compile Include="Models\keyAttribute.cs" />
     <Compile Include="Models\KnjigaModel.cs" />
     <Compile Include="Models\UcenikModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -178,6 +179,8 @@
     <Content Include="Views\Knjiga\Izmeni.cshtml" />
     <Content Include="Views\Ucenik\NoviUcenik.cshtml" />
     <Content Include="Views\Knjiga\Index.cshtml" />
+    <Content Include="Views\Ucenik\index.cshtml" />
+    <Content Include="Views\Ucenik\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

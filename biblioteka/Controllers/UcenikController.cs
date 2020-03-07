@@ -10,16 +10,28 @@ namespace WebApplication1.Controllers
     public class UcenikController : Controller
     {
         // GET: Ucenik
-        public ActionResult NoviUcenik()
+        public ActionResult Index()
+        {
+            BibliotekaDB bdb = new BibliotekaDB();
+            var ucenici = bdb.Ucenik.ToList();
+
+            return View(ucenici);
+        }
+        public ActionResult Create()
         {
             return View();
         }
 
         // GET: Knjiga
         [HttpPost]
-        public ActionResult NoviUcenik(UcenikModel um)
+        public ActionResult Create(UcenikModel um)
         {
-            return View();
+            BibliotekaDB bdb = new BibliotekaDB();
+
+            bdb.Ucenik.Add(um);
+            bdb.SaveChanges(); 
+
+            return RedirectToAction("Index");
         }
     }
 }
