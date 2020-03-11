@@ -65,9 +65,12 @@ namespace WebApplication1.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Details()
+        public ActionResult Details(int id)
         {
-            return View();
+            BibliotekaDB bdb = new BibliotekaDB();
+            var knjiga = bdb.Knjiga.FirstOrDefault(a => a.KnjigaId == id);
+
+            return View(knjiga);
         }
     }
 }
