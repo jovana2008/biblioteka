@@ -7,7 +7,7 @@ using System.Web;
 
 namespace WebApplication1.Models
 {
-    [Table("ucenik")]
+    [Table("Ucenik")]
     public class UcenikModel
     {
         [Key]
@@ -26,9 +26,7 @@ namespace WebApplication1.Models
         public string Odeljenje { get; set; }
 
         public string Adresa { get; set; }
-
         public string Email { get; set; }
-
         public string Telefon { get; set; }
     }
 }
