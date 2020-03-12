@@ -9,6 +9,7 @@ namespace WebApplication1.Models
 {
     [Table("Ucenik")]
     public class UcenikModel
+
     {
         [Key]
         public int UcenikID { get; set; }
