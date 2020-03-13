@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,6 +9,7 @@ namespace WebApplication1.Models
 {
     [Table("Ucenik")]
     public class UcenikModel
+
     {
         [Key]
         public int UcenikID { get; set; }
@@ -26,9 +27,7 @@ namespace WebApplication1.Models
         public string Odeljenje { get; set; }
 
         public string Adresa { get; set; }
-
         public string Email { get; set; }
-
         public string Telefon { get; set; }
     }
 }
