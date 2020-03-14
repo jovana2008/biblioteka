@@ -48,81 +48,29 @@ namespace WebApplication1.Controllers
             return RedirectToAction("Index");
         }
 
-
+        public ActionResult Delete()
+        {
+            return View();
+        }
 
         // GET: Knjiga
         [HttpPost]
-        public ActionResult NovaKnjiga(KnjigaModel km)
+        public ActionResult Delete(KnjigaModel km)
         {
-            return View();
+            BibliotekaDB bdb = new BibliotekaDB();
+
+            bdb.Knjiga.Remove(km);
+            bdb.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
-        
-
-        // GET: Knjiga/Create
-        public ActionResult Create()
+        public ActionResult Details(int id)
         {
-            return View();
-        }
+            BibliotekaDB bdb = new BibliotekaDB();
+            var knjiga = bdb.Knjiga.FirstOrDefault(a => a.KnjigaId == id);
 
-        // POST: Knjiga/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Knjiga/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Knjiga/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Knjiga/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Knjiga/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return View(knjiga);
         }
     }
 }
