@@ -15,12 +15,39 @@ namespace WebApplication1.Controllers
         public ActionResult Index()
         {
             BibliotekaDB bdb = new BibliotekaDB();
-            var knjige = bdb.Knjiga.ToList();
+            var ucenik = bdb.Ucenik.ToList();
 
-            return View(knjige);
+            return View(ucenik);
         }
 
-        // GET: Knjiga/Izmeni/5
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+
+
+        public ActionResult Create(KnjigaModel km)
+        {
+
+
+            BibliotekaDB bdb = new BibliotekaDB();
+            var knjiga = new KnjigaModel();
+
+            knjiga.MestoIzdavanja = km.MestoIzdavanja;
+            knjiga.InventarniBroj = km.InventarniBroj;
+            knjiga.Naslov = km.Naslov;
+            knjiga.Pisac = km.Pisac;
+            knjiga.GodinaIzdavanja = km.GodinaIzdavanja;
+
+            bdb.Knjiga.Add(knjiga);
+            bdb.SaveChanges();
+
+            return RedirectToAction("Intex");
+
+        }
+
+
         //[Route("{knjigaId}")]
         public ActionResult Izmeni(int id)
         {

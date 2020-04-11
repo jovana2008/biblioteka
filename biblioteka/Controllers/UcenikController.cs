@@ -10,13 +10,15 @@ namespace WebApplication1.Controllers
     public class UcenikController : Controller
     {
         // GET: Ucenik
+        [HttpGet]
         public ActionResult Index()
         {
             BibliotekaDB bdb = new BibliotekaDB();
-            var ucenici = bdb.Ucenik.ToList();
+            var ucenik = bdb.Ucenik.ToList();
 
-            return View(ucenici);
+            return View(ucenik);
         }
+
 
         public ActionResult Create()
         {
@@ -28,8 +30,24 @@ namespace WebApplication1.Controllers
         public ActionResult Create(UcenikModel um)
         {
             BibliotekaDB bdb = new BibliotekaDB();
+            var ucenik = new UcenikModel();
 
-            bdb.Ucenik.Add(um);
+            ucenik.Ime = um.Ime;
+            ucenik.UcenikID = um.UcenikID;
+            ucenik.Prezime = um.Prezime;
+            ucenik.GodinaRodjenja = um.GodinaRodjenja;
+            ucenik.BrojUDnevniku = um.BrojUDnevniku;
+            ucenik.Razred = um.Razred;
+            ucenik.Odeljenje = um.Odeljenje;
+            ucenik.Adresa = um.Adresa;
+            ucenik.Email = um.Email;
+            ucenik.Telefon = um.Telefon;
+
+
+
+
+            bdb.Ucenik.Add(ucenik);
+            
             bdb.SaveChanges();
 
             return RedirectToAction("Index");
