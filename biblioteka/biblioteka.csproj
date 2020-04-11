@@ -181,6 +181,10 @@
     <Content Include="Views\Knjiga\Index.cshtml" />
     <Content Include="Views\Ucenik\Index.cshtml" />
     <Content Include="Views\Ucenik\Create.cshtml" />
+    <Content Include="Views\Knjiga\Delete.cshtml" />
+    <Content Include="Views\Knjiga\Details.cshtml" />
+    <Content Include="Views\Ucenik\Izmeni.cshtml" />
+    <Content Include="Views\Knjiga\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models;
@@ -10,6 +11,41 @@ namespace WebApplication1.Controllers
     //[Route("knjiga")]
     public class KnjigaController : Controller
     {
+        [HttpPost]
+        public ActionResult Create(KnjigaModel km)
+        {
+            BibliotekaDB bdb = new BibliotekaDB();
+            var knjiga = new KnjigaModel();
+
+            knjiga.MestoIzdavanja = km.MestoIzdavanja;
+            knjiga.InventarniBroj = km.InventarniBroj;
+            knjiga.Naslov = km.Naslov;
+            knjiga.Pisac = km.Pisac;
+            knjiga.GodinaIzdavanja = km.GodinaIzdavanja;
+
+            bdb.Knjiga.Add(knjiga);
+
+            bdb.SaveChanges();
+
+
+            return RedirectToAction("Index");
+        }
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
         // GET: Knjiga
         [HttpGet]
         public ActionResult Index()
@@ -75,22 +111,46 @@ namespace WebApplication1.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Delete()
+
+
+
+        [HttpGet]
+        public ActionResult Delete(int? id, bool? saveChangesError = false)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your system administrator.";
+            }
+
+            BibliotekaDB bdb = new BibliotekaDB();
+            KnjigaModel knjiga = bdb.Knjiga.Find(id);
+            if (knjiga == null)
+            {
+                return HttpNotFound();
+            }
+            return View(knjiga);
         }
 
         // GET: Knjiga
         [HttpPost]
-        public ActionResult Delete(KnjigaModel km)
+        public ActionResult Delete(int id)
         {
             BibliotekaDB bdb = new BibliotekaDB();
 
-            bdb.Knjiga.Remove(km);
+            var knjiga = bdb.Knjiga.FirstOrDefault(a => a.KnjigaId == id);
+
+            bdb.Knjiga.Remove(knjiga);
             bdb.SaveChanges();
 
             return RedirectToAction("Index");
         }
+
+
+
 
         public ActionResult Details(int id)
         {
