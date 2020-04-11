@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebApplication1.Models.ZanrModel>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<a href="/Zanr/Create" class="btn btn-warning">Dodaj novi zanr</a>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ZanrID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ime)
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZanrID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ime)
+            </td>
+            <td>
+                <a href="/Zanr/Edit/@item.ZanrID" class="btn btn-warning">Edit</a>
+            </td>
+            <td>
+                <a href="/Zanr/Details/@item.ZanrID" class="btn btn-primary">Details</a>
+            </td>
+            <td>
+                <a href="/Zanr/Delete/@item.ZanrID" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>

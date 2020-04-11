@@ -1,0 +1,35 @@
+﻿@model WebApplication1.Models.ZanrModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ZanrModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ZanrID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ZanrID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ZanrID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -8,15 +8,15 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
-    public class UcenikController : Controller
+    public class ZanrController : Controller
     {
-        // GET: Ucenik
+        // GET: zanr
         public ActionResult Index()
         {
             BibliotekaDB bdb = new BibliotekaDB();
-            var ucenici = bdb.Ucenik.ToList();
+            var zanrovi = bdb.Zanr.ToList();
 
-            return View(ucenici);
+            return View(zanrovi);
         }
 
         public ActionResult Create()
@@ -26,21 +26,14 @@ namespace WebApplication1.Controllers
 
         // GET: Knjiga
         [HttpPost]
-        public ActionResult Create(UcenikModel um)
+        public ActionResult Create(ZanrModel zm)
         {
             BibliotekaDB bdb = new BibliotekaDB();
-            var ucenik = new UcenikModel();
+            var zanr = new ZanrModel();
 
-            ucenik.Adresa = um.Adresa;
-            ucenik.BrojUDnevniku = um.BrojUDnevniku;
-            ucenik.Email = um.Email;
-            ucenik.GodinaRodjenja = um.GodinaRodjenja;
-            ucenik.Ime = um.Ime;
-            ucenik.Prezime = um.Prezime;
-            ucenik.Razred = um.Prezime;
-            ucenik.Odeljenje = um.Odeljenje;
-            ucenik.Telefon = um.Telefon;
+            zanr.Ime = zm.Ime;
 
+            bdb.Zanr.Add(zanr);
             bdb.SaveChanges();
 
             return RedirectToAction("Index");
@@ -49,26 +42,18 @@ namespace WebApplication1.Controllers
         public ActionResult Edit(int id)
         {
             BibliotekaDB bdb = new BibliotekaDB();
-            var ucenik = bdb.Ucenik.FirstOrDefault(a => a.UcenikID == id);
+            var zanr = bdb.Zanr.FirstOrDefault(a => a.ZanrID == id);
 
-            return View(ucenik);
+            return View(zanr);
         }
 
         [HttpPost]
-        public ActionResult Edit(UcenikModel um)
+        public ActionResult Edit(ZanrModel zm)
         {
             BibliotekaDB bdb = new BibliotekaDB();
-            var ucenik = bdb.Ucenik.FirstOrDefault(a => a.UcenikID == um.UcenikID);
+            var zanr = bdb.Zanr.FirstOrDefault(a => a.ZanrID == zm.ZanrID);
 
-            ucenik.Adresa = um.Adresa;
-            ucenik.BrojUDnevniku = um.BrojUDnevniku;
-            ucenik.Email = um.Email;
-            ucenik.GodinaRodjenja = um.GodinaRodjenja;
-            ucenik.Ime = um.Ime;
-            ucenik.Prezime = um.Prezime;
-            ucenik.Razred = um.Prezime;
-            ucenik.Odeljenje = um.Odeljenje;
-            ucenik.Telefon = um.Telefon;
+            zanr.Ime = zm.Ime;
 
             bdb.SaveChanges();
 
@@ -88,12 +73,12 @@ namespace WebApplication1.Controllers
             }
 
             BibliotekaDB bdb = new BibliotekaDB();
-            UcenikModel ucenik = bdb.Ucenik.Find(id);
-            if (ucenik == null)
+            ZanrModel zanr = bdb.Zanr.Find(id);
+            if (zanr == null)
             {
                 return HttpNotFound();
             }
-            return View(ucenik);
+            return View(zanr);
         }
 
         // GET: Knjiga
@@ -101,9 +86,9 @@ namespace WebApplication1.Controllers
         public ActionResult Delete(int id)
         {
             BibliotekaDB bdb = new BibliotekaDB();
-            var ucenik = bdb.Ucenik.FirstOrDefault(a => a.UcenikID == id);
+            var zanr = bdb.Zanr.FirstOrDefault(a => a.ZanrID == id);
 
-            bdb.Ucenik.Remove(ucenik);
+            bdb.Zanr.Remove(zanr);
             bdb.SaveChanges();
 
             return RedirectToAction("Index");
@@ -112,9 +97,9 @@ namespace WebApplication1.Controllers
         public ActionResult Details(int id)
         {
             BibliotekaDB bdb = new BibliotekaDB();
-            var ucenik = bdb.Ucenik.FirstOrDefault(a => a.UcenikID == id);
+            var zanr = bdb.Zanr.FirstOrDefault(a => a.ZanrID == id);
 
-            return View(ucenik);
+            return View(zanr);
         }
     }
 }
