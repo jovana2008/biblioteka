@@ -53,9 +53,9 @@ namespace WebApplication1.Controllers
         public ActionResult Index()
         {
             BibliotekaDB bdb = new BibliotekaDB();
-            var knjige = bdb.Knjiga.ToList();
+            var ucenik = bdb.Ucenik.ToList();
 
-            return View(knjige);
+            return View(ucenik);
         }
 
 
