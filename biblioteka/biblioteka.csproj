@@ -129,6 +129,7 @@
     <Compile Include="Controllers\KnjigaController.cs" />
     <Compile Include="Controllers\profilController.cs" />
     <Compile Include="Controllers\UcenikController.cs" />
+    <Compile Include="Controllers\ZanrController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -136,6 +137,7 @@
     <Compile Include="Models\keyAttribute.cs" />
     <Compile Include="Models\KnjigaModel.cs" />
     <Compile Include="Models\UcenikModel.cs" />
+    <Compile Include="Models\ZanrModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -185,6 +187,7 @@
     <Content Include="Views\Knjiga\Details.cshtml" />
     <Content Include="Views\Ucenik\Izmeni.cshtml" />
     <Content Include="Views\Knjiga\Create.cshtml" />
+    <Content Include="Views\Zanr\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

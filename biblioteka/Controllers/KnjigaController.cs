@@ -11,6 +11,13 @@ namespace WebApplication1.Controllers
     //[Route("knjiga")]
     public class KnjigaController : Controller
     {
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+
         [HttpPost]
         public ActionResult Create(KnjigaModel km)
         {
@@ -30,11 +37,6 @@ namespace WebApplication1.Controllers
 
             return RedirectToAction("Index");
         }
-        public ActionResult Create()
-        {
-            return View();
-        }
-
 
 
 
@@ -56,12 +58,32 @@ namespace WebApplication1.Controllers
             return View(knjige);
         }
 
+
+
+
+
+
+
+
+
+
         // GET: Knjiga/Izmeni/5
         //[Route("{knjigaId}")]
         public ActionResult Izmeni(int id)
         {
             BibliotekaDB bdb = new BibliotekaDB();
             var knjiga = bdb.Knjiga.FirstOrDefault(a => a.KnjigaId == id);
+
+            var zanrovi = bdb.Zanr.ToList();
+
+            var listaZanrova = new List<SelectListItem>();
+
+            zanrovi.ForEach(z => {
+
+                listaZanrova.Add(new SelectListItem() { Text = z.Naziv, Value = z.Id.ToString(), Selected = z.Id == knjiga.ZanrId ? true : false });
+            });
+
+            ViewBag.ListaZanrova = listaZanrova;
 
             return View(knjiga);
         }
@@ -77,6 +99,7 @@ namespace WebApplication1.Controllers
             knjiga.Naslov = km.Naslov;
             knjiga.Pisac = km.Pisac;
             knjiga.GodinaIzdavanja = km.GodinaIzdavanja;
+            knjiga.ZanrId = km.ZanrId;
 
             bdb.SaveChanges();
 
