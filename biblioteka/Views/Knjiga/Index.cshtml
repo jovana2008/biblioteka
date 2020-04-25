@@ -33,7 +33,8 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.InventarniBroj)
@@ -60,6 +61,6 @@
             <a href="/Knjiga/Delete/@item.KnjigaId" class="btn btn-danger">Delete</a>
         </td>
     </tr>
-}
+    }
 
 </table>
