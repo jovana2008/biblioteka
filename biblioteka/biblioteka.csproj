@@ -127,6 +127,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KnjigaController.cs" />
+    <Compile Include="Controllers\PozajmiceController.cs" />
     <Compile Include="Controllers\profilController.cs" />
     <Compile Include="Controllers\UcenikController.cs" />
     <Compile Include="Controllers\ZanrController.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Models\BibliotekaDB.cs" />
     <Compile Include="Models\keyAttribute.cs" />
     <Compile Include="Models\KnjigaModel.cs" />
+    <Compile Include="Models\PozajmiceModel.cs" />
     <Compile Include="Models\UcenikModel.cs" />
     <Compile Include="Models\ZanrModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -193,6 +195,8 @@
     <Content Include="Views\Zanr\Details.cshtml" />
     <Content Include="Views\Zanr\Delete.cshtml" />
     <Content Include="Views\Zanr\Create.cshtml" />
+    <Content Include="Views\Pozajmice\Create.cshtml" />
+    <Content Include="Views\Pozajmice\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
