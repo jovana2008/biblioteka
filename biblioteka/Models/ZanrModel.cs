@@ -9,10 +9,12 @@ namespace WebApplication1.Models
 {
     [Table("Zanr")]
     public class ZanrModel
+
     {
         [Key]
         public int Id { get; set; }
 
         public string Naziv { get; set; }
+
     }
 }

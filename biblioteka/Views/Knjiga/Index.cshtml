@@ -26,6 +26,9 @@
             @Html.DisplayNameFor(model => model.MestoIzdavanja)
         </th>
         <th>
+            @*Html.DisplayNameFor(model => model.Zanr.Naziv)*@ Zanr
+        </th>
+        <th>
         </th>
         <th>
         </th>
@@ -33,7 +36,8 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.InventarniBroj)
@@ -51,6 +55,9 @@
             @Html.DisplayFor(modelItem => item.MestoIzdavanja)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Zanr.Naziv)
+        </td>
+        <td>
             <a href="/Knjiga/Izmeni/@item.KnjigaId" class="btn btn-warning">Edit</a>
         </td>
         <td>
@@ -60,6 +67,6 @@
             <a href="/Knjiga/Delete/@item.KnjigaId" class="btn btn-danger">Delete</a>
         </td>
     </tr>
-}
+    }
 
 </table>

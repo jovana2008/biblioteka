@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models;
@@ -9,86 +10,96 @@ namespace WebApplication1.Controllers
 {
     public class ZanrController : Controller
     {
-        // GET: Zanr
+        // GET: zanr
         public ActionResult Index()
         {
             BibliotekaDB bdb = new BibliotekaDB();
             var zanrovi = bdb.Zanr.ToList();
 
-
             return View(zanrovi);
         }
 
-        // GET: Zanr/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Zanr/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Zanr/Create
+        // GET: Knjiga
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(ZanrModel zm)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            BibliotekaDB bdb = new BibliotekaDB();
+            var zanr = new ZanrModel();
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            zanr.Naziv = zm.Naziv;
+
+            bdb.Zanr.Add(zanr);
+            bdb.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
-        // GET: Zanr/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            BibliotekaDB bdb = new BibliotekaDB();
+            var zanr = bdb.Zanr.FirstOrDefault(a => a.Id == id);
+
+            return View(zanr);
         }
 
-        // POST: Zanr/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(ZanrModel zm)
         {
-            try
-            {
-                // TODO: Add update logic here
+            BibliotekaDB bdb = new BibliotekaDB();
+            var zanr = bdb.Zanr.FirstOrDefault(a => a.Id == zm.Id);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            zanr.Naziv = zm.Naziv;
+
+            bdb.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
-        // GET: Zanr/Delete/5
+        [HttpGet]
+        public ActionResult Delete(int? id, bool? saveChangesError = false)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your system administrator.";
+            }
+
+            BibliotekaDB bdb = new BibliotekaDB();
+            ZanrModel zanr = bdb.Zanr.Find(id);
+            if (zanr == null)
+            {
+                return HttpNotFound();
+            }
+            return View(zanr);
+        }
+
+        // GET: Knjiga
+        [HttpPost]
         public ActionResult Delete(int id)
         {
-            return View();
+            BibliotekaDB bdb = new BibliotekaDB();
+            var zanr = bdb.Zanr.FirstOrDefault(a => a.Id == id);
+
+            bdb.Zanr.Remove(zanr);
+            bdb.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
-        // POST: Zanr/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Details(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            BibliotekaDB bdb = new BibliotekaDB();
+            var zanr = bdb.Zanr.FirstOrDefault(a => a.Id == id);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return View(zanr);
         }
     }
 }

@@ -11,12 +11,15 @@ namespace WebApplication1.Controllers
     //[Route("knjiga")]
     public class KnjigaController : Controller
     {
-
-        public ActionResult Create()
+        // GET: Knjiga
+        [HttpGet]
+        public ActionResult Index()
         {
-            return View();
-        }
+            BibliotekaDB bdb = new BibliotekaDB();
+            var knjige = bdb.Knjiga.Include("Zanr").ToList();
 
+            return View(knjige);
+        }
 
         [HttpPost]
         public ActionResult Create(KnjigaModel km)
@@ -29,43 +32,30 @@ namespace WebApplication1.Controllers
             knjiga.Naslov = km.Naslov;
             knjiga.Pisac = km.Pisac;
             knjiga.GodinaIzdavanja = km.GodinaIzdavanja;
+            knjiga.ZanrId = km.ZanrId;
 
             bdb.Knjiga.Add(knjiga);
 
             bdb.SaveChanges();
 
-
             return RedirectToAction("Index");
         }
 
-
-
-
-
-
-
-
-
-
-
-        // GET: Knjiga
-        [HttpGet]
-        public ActionResult Index()
+        public ActionResult Create()
         {
             BibliotekaDB bdb = new BibliotekaDB();
-            var ucenik = bdb.Ucenik.ToList();
 
-            return View(ucenik);
+            var zanrovi = bdb.Zanr.ToList();
+            var listaZanrova = new List<SelectListItem>();
+
+            zanrovi.ForEach(z =>
+            {
+                listaZanrova.Add(new SelectListItem() { Text = z.Naziv, Value = z.Id.ToString() });
+            });
+
+            ViewBag.ListaZanrova = listaZanrova;
+            return View();
         }
-
-
-
-
-
-
-
-
-
 
         // GET: Knjiga/Izmeni/5
         //[Route("{knjigaId}")]
@@ -78,8 +68,8 @@ namespace WebApplication1.Controllers
 
             var listaZanrova = new List<SelectListItem>();
 
-            zanrovi.ForEach(z => {
-
+            zanrovi.ForEach(z =>
+            {
                 listaZanrova.Add(new SelectListItem() { Text = z.Naziv, Value = z.Id.ToString(), Selected = z.Id == knjiga.ZanrId ? true : false });
             });
 
@@ -107,24 +97,21 @@ namespace WebApplication1.Controllers
             return RedirectToAction("Index");
         }
 
-
-
-
         [HttpGet]
         public ActionResult Delete(int? id, bool? saveChangesError = false)
         {
-            if (id == null)
+            if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            if (saveChangesError.GetValueOrDefault())
+            if(saveChangesError.GetValueOrDefault())
             {
                 ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your system administrator.";
             }
 
             BibliotekaDB bdb = new BibliotekaDB();
             KnjigaModel knjiga = bdb.Knjiga.Find(id);
-            if (knjiga == null)
+            if(knjiga == null)
             {
                 return HttpNotFound();
             }
@@ -136,7 +123,6 @@ namespace WebApplication1.Controllers
         public ActionResult Delete(int id)
         {
             BibliotekaDB bdb = new BibliotekaDB();
-
             var knjiga = bdb.Knjiga.FirstOrDefault(a => a.KnjigaId == id);
 
             bdb.Knjiga.Remove(knjiga);
@@ -144,9 +130,6 @@ namespace WebApplication1.Controllers
 
             return RedirectToAction("Index");
         }
-
-
-
 
         public ActionResult Details(int id)
         {

@@ -7,9 +7,7 @@
 
 <h2>View</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<a href="/Knjiga/Create" class="btn btn-warning">Dodaj novog ucenika</a>
 <table class="table">
     <tr>
         <th>
@@ -30,37 +28,42 @@
         <th>
             @Html.DisplayNameFor(model => model.Odeljenje)
         </th>
-      <th></th>
-      <th></th>
-      <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Prezime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GodinaRodjenja)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BrojUDnevniku)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Razred)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Odeljenje)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UcenikID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UcenikID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UcenikID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prezime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GodinaRodjenja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrojUDnevniku)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Razred)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Odeljenje)
+            </td>
+            <td>
+                <a href="/Ucenik/Edit/@item.UcenikID" class="btn btn-warning">Edit</a>
+            </td>
+            <td>
+                <a href="/Ucenik/Details/@item.UcenikID" class="btn btn-primary">Details</a>
+            </td>
+            <td>
+                <a href="/Ucenik/Delete/@item.UcenikID" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
 
 </table>

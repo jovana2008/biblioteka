@@ -13,7 +13,6 @@ namespace WebApplication1.Models
 
         public DbSet<KnjigaModel> Knjiga { get; set; }
         public DbSet<UcenikModel> Ucenik { get; set; }
-
         public DbSet<ZanrModel> Zanr { get; set; }
     }
 }
