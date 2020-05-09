@@ -12,10 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ZanrID)
+            @Html.DisplayNameFor(model => model.Id)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Ime)
+            @Html.DisplayNameFor(model => model. Naziv)
         </th>
         <th></th>
         <th></th>
@@ -26,19 +26,19 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ZanrID)
+                @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Ime)
+                @Html.DisplayFor(modelItem => item.Naziv)
             </td>
             <td>
-                <a href="/Zanr/Edit/@item.ZanrID" class="btn btn-warning">Edit</a>
+                <a href="/Zanr/Edit/@item.Id" class="btn btn-warning">Edit</a>
             </td>
             <td>
-                <a href="/Zanr/Details/@item.ZanrID" class="btn btn-primary">Details</a>
+                <a href="/Zanr/Details/@item.Id" class="btn btn-primary">Details</a>
             </td>
             <td>
-                <a href="/Zanr/Delete/@item.ZanrID" class="btn btn-danger">Delete</a>
+                <a href="/Zanr/Delete/@item.Id" class="btn btn-danger">Delete</a>
             </td>
         </tr>
     }

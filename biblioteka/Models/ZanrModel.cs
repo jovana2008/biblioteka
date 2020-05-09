@@ -12,9 +12,9 @@ namespace WebApplication1.Models
 
     {
         [Key]
-        public int ZanrID { get; set; }
+        public int Id { get; set; }
 
-        public string Ime { get; set; }
+        public string Naziv { get; set; }
 
     }
 }

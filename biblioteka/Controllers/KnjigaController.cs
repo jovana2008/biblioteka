@@ -16,7 +16,7 @@ namespace WebApplication1.Controllers
         public ActionResult Index()
         {
             BibliotekaDB bdb = new BibliotekaDB();
-            var knjige = bdb.Knjiga.ToList();
+            var knjige = bdb.Knjiga.Include("Zanr").ToList();
 
             return View(knjige);
         }
@@ -32,6 +32,7 @@ namespace WebApplication1.Controllers
             knjiga.Naslov = km.Naslov;
             knjiga.Pisac = km.Pisac;
             knjiga.GodinaIzdavanja = km.GodinaIzdavanja;
+            knjiga.ZanrId = km.ZanrId;
 
             bdb.Knjiga.Add(knjiga);
 
@@ -42,6 +43,17 @@ namespace WebApplication1.Controllers
 
         public ActionResult Create()
         {
+            BibliotekaDB bdb = new BibliotekaDB();
+
+            var zanrovi = bdb.Zanr.ToList();
+            var listaZanrova = new List<SelectListItem>();
+
+            zanrovi.ForEach(z =>
+            {
+                listaZanrova.Add(new SelectListItem() { Text = z.Naziv, Value = z.Id.ToString() });
+            });
+
+            ViewBag.ListaZanrova = listaZanrova;
             return View();
         }
 
@@ -51,6 +63,17 @@ namespace WebApplication1.Controllers
         {
             BibliotekaDB bdb = new BibliotekaDB();
             var knjiga = bdb.Knjiga.FirstOrDefault(a => a.KnjigaId == id);
+
+            var zanrovi = bdb.Zanr.ToList();
+
+            var listaZanrova = new List<SelectListItem>();
+
+            zanrovi.ForEach(z =>
+            {
+                listaZanrova.Add(new SelectListItem() { Text = z.Naziv, Value = z.Id.ToString(), Selected = z.Id == knjiga.ZanrId ? true : false });
+            });
+
+            ViewBag.ListaZanrova = listaZanrova;
 
             return View(knjiga);
         }
@@ -66,6 +89,7 @@ namespace WebApplication1.Controllers
             knjiga.Naslov = km.Naslov;
             knjiga.Pisac = km.Pisac;
             knjiga.GodinaIzdavanja = km.GodinaIzdavanja;
+            knjiga.ZanrId = km.ZanrId;
 
             bdb.SaveChanges();
 

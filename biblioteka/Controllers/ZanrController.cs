@@ -31,7 +31,7 @@ namespace WebApplication1.Controllers
             BibliotekaDB bdb = new BibliotekaDB();
             var zanr = new ZanrModel();
 
-            zanr.Ime = zm.Ime;
+            zanr.Naziv = zm.Naziv;
 
             bdb.Zanr.Add(zanr);
             bdb.SaveChanges();
@@ -42,7 +42,7 @@ namespace WebApplication1.Controllers
         public ActionResult Edit(int id)
         {
             BibliotekaDB bdb = new BibliotekaDB();
-            var zanr = bdb.Zanr.FirstOrDefault(a => a.ZanrID == id);
+            var zanr = bdb.Zanr.FirstOrDefault(a => a.Id == id);
 
             return View(zanr);
         }
@@ -51,9 +51,9 @@ namespace WebApplication1.Controllers
         public ActionResult Edit(ZanrModel zm)
         {
             BibliotekaDB bdb = new BibliotekaDB();
-            var zanr = bdb.Zanr.FirstOrDefault(a => a.ZanrID == zm.ZanrID);
+            var zanr = bdb.Zanr.FirstOrDefault(a => a.Id == zm.Id);
 
-            zanr.Ime = zm.Ime;
+            zanr.Naziv = zm.Naziv;
 
             bdb.SaveChanges();
 
@@ -86,7 +86,7 @@ namespace WebApplication1.Controllers
         public ActionResult Delete(int id)
         {
             BibliotekaDB bdb = new BibliotekaDB();
-            var zanr = bdb.Zanr.FirstOrDefault(a => a.ZanrID == id);
+            var zanr = bdb.Zanr.FirstOrDefault(a => a.Id == id);
 
             bdb.Zanr.Remove(zanr);
             bdb.SaveChanges();
@@ -97,7 +97,7 @@ namespace WebApplication1.Controllers
         public ActionResult Details(int id)
         {
             BibliotekaDB bdb = new BibliotekaDB();
-            var zanr = bdb.Zanr.FirstOrDefault(a => a.ZanrID == id);
+            var zanr = bdb.Zanr.FirstOrDefault(a => a.Id == id);
 
             return View(zanr);
         }

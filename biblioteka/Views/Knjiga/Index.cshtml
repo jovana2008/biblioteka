@@ -26,6 +26,9 @@
             @Html.DisplayNameFor(model => model.MestoIzdavanja)
         </th>
         <th>
+            @*Html.DisplayNameFor(model => model.Zanr.Naziv)*@ Zanr
+        </th>
+        <th>
         </th>
         <th>
         </th>
@@ -50,6 +53,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.MestoIzdavanja)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Zanr.Naziv)
         </td>
         <td>
             <a href="/Knjiga/Izmeni/@item.KnjigaId" class="btn btn-warning">Edit</a>
