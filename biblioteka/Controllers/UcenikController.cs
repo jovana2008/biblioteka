@@ -37,9 +37,11 @@ namespace WebApplication1.Controllers
             ucenik.GodinaRodjenja = um.GodinaRodjenja;
             ucenik.Ime = um.Ime;
             ucenik.Prezime = um.Prezime;
-            ucenik.Razred = um.Prezime;
+            ucenik.Razred = um.Razred;
             ucenik.Odeljenje = um.Odeljenje;
             ucenik.Telefon = um.Telefon;
+
+            bdb.Ucenik.Add(ucenik);
 
             bdb.SaveChanges();
 
