@@ -1591,16 +1591,25 @@ pre code {
   .container {
     width: 750px;
   }
+    .nav__links {
+        float: left;
+    }
 }
 @media (min-width: 992px) {
   .container {
     width: 970px;
   }
+    .nav__links {
+        float: left;
+    }
 }
 @media (min-width: 1200px) {
   .container {
     width: 1170px;
   }
+    .nav__links {
+        float: left;
+    }
 }
 .container-fluid {
   padding-right: 15px;
@@ -1931,6 +1940,9 @@ pre code {
   .col-sm-offset-0 {
     margin-left: 0;
   }
+    .nav__links {
+        float: left;
+    }
 }
 @media (min-width: 992px) {
   .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
@@ -2089,6 +2101,9 @@ pre code {
   .col-md-offset-0 {
     margin-left: 0;
   }
+    .nav__links {
+        float: left;
+    }
 }
 @media (min-width: 1200px) {
   .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
@@ -2247,6 +2262,9 @@ pre code {
   .col-lg-offset-0 {
     margin-left: 0;
   }
+    .nav__links {
+        float: left;
+    }
 }
 table {
   background-color: transparent;
@@ -2451,6 +2469,7 @@ table th[class*="col-"] {
     -ms-overflow-style: -ms-autohiding-scrollbar;
     border: 1px solid #ddd;
   }
+
   .table-responsive > .table {
     margin-bottom: 0;
   }
@@ -3641,6 +3660,9 @@ tbody.collapse.in {
     right: auto;
     left: 0;
   }
+  .nav__links {
+      float: left;
+  }
 }
 .btn-group,
 .btn-group-vertical {
@@ -4083,6 +4105,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs.nav-justified > .active > a:focus {
     border-bottom-color: #fff;
   }
+    .nav__links {
+        float: left;
+    }
 }
 .nav-pills > li {
   float: left;
@@ -4128,6 +4153,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-justified > li > a {
     margin-bottom: 0;
   }
+    .nav__links {
+        float: left;
+    }
 }
 .nav-tabs-justified {
   border-bottom: 0;
@@ -4151,6 +4179,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs-justified > .active > a:focus {
     border-bottom-color: #fff;
   }
+    .nav__links {
+        float: left;
+    }
 }
 .tab-content > .tab-pane {
   display: none;
@@ -4173,11 +4204,17 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar {
     border-radius: 4px;
   }
+    .nav__links {
+        float: left;
+    }
 }
 @media (min-width: 768px) {
   .navbar-header {
     float: left;
   }
+    .nav__links {
+        float: left;
+    }
 }
 .navbar-collapse {
   padding-right: 15px;
@@ -4213,6 +4250,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     padding-right: 0;
     padding-left: 0;
   }
+    .nav__links {
+        float: left;
+    }
 }
 .navbar-fixed-top .navbar-collapse,
 .navbar-fixed-bottom .navbar-collapse {
@@ -4223,6 +4263,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-fixed-bottom .navbar-collapse {
     max-height: 200px;
   }
+    .nav__links {
+        float: left;
+    }
 }
 .container > .navbar-header,
 .container-fluid > .navbar-header,
@@ -4239,6 +4282,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     margin-right: 0;
     margin-left: 0;
   }
+    .nav__links {
+        float: left;
+    }
 }
 .navbar-static-top {
   z-index: 1000;
@@ -4248,6 +4294,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-static-top {
     border-radius: 0;
   }
+    .nav__links {
+        float: left;
+    }
 }
 .navbar-fixed-top,
 .navbar-fixed-bottom {
@@ -4261,6 +4310,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-fixed-bottom {
     border-radius: 0;
   }
+    .nav__links {
+        float: left;
+    }
 }
 .navbar-fixed-top {
   top: 0;
@@ -4290,6 +4342,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar > .container-fluid .navbar-brand {
     margin-left: -15px;
   }
+    .nav__links {
+        float: left;
+    }
 }
 .navbar-toggle {
   position: relative;
@@ -4319,6 +4374,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-toggle {
     display: none;
   }
+    .nav__links {
+        float: left;
+    }
 }
 .navbar-nav {
   margin: 7.5px -15px;
@@ -4350,6 +4408,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-nav .open .dropdown-menu > li > a:focus {
     background-image: none;
   }
+    .nav__links {
+        float: left;
+    }
 }
 @media (min-width: 768px) {
   .navbar-nav {
@@ -4363,6 +4424,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     padding-top: 15px;
     padding-bottom: 15px;
   }
+    .nav__links {
+        float: left;
+    }
 }
 .navbar-form {
   padding: 10px 15px;
@@ -4424,6 +4488,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-form .has-feedback .form-control-feedback {
     top: 0;
   }
+    .nav__links {
+        float: left;
+    }
 }
 @media (max-width: 767px) {
   .navbar-form .form-group {
@@ -4444,6 +4511,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     -webkit-box-shadow: none;
             box-shadow: none;
   }
+    .nav__links {
+        float: left;
+    }
 }
 .navbar-nav > li > .dropdown-menu {
   margin-top: 0;
@@ -4491,6 +4561,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-right ~ .navbar-right {
     margin-right: 0;
   }
+    .nav__links {
+        float: left;
+    }
 }
 .navbar-default {
   background-color: #f8f8f8;
@@ -4568,6 +4641,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     color: #ccc;
     background-color: transparent;
   }
+    .nav__links {
+        float: left;
+    }
 }
 .navbar-default .navbar-link {
   color: #777;
@@ -4670,6 +4746,9 @@ fieldset[disabled] .navbar-default .btn-link:focus {
     color: #444;
     background-color: transparent;
   }
+    .nav__links {
+        float: left;
+    }
 }
 .navbar-inverse .navbar-link {
   color: #9d9d9d;
@@ -4976,8 +5055,6 @@ a.badge:focus {
 }
 .container .jumbotron,
 .container-fluid .jumbotron {
-  padding-right: 15px;
-  padding-left: 15px;
   border-radius: 6px;
 }
 .jumbotron .container {
@@ -4987,11 +5064,7 @@ a.badge:focus {
   .jumbotron {
     padding-top: 48px;
     padding-bottom: 48px;
-  }
-  .container .jumbotron,
-  .container-fluid .jumbotron {
-    padding-right: 60px;
-    padding-left: 60px;
+
   }
   .jumbotron h1,
   .jumbotron .h1 {
@@ -6755,3 +6828,7 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+.jumbotron {
+    margin-top: 200px;
+}

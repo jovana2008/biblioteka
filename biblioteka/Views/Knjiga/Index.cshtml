@@ -38,35 +38,34 @@
 
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.InventarniBroj)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pisac)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Naslov)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GodinaIzdavanja)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MestoIzdavanja)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Zanr.Naziv)
-        </td>
-        <td>
-            <a href="/Knjiga/Izmeni/@item.KnjigaId" class="btn btn-warning">Edit</a>
-        </td>
-        <td>
-            <a href="/Knjiga/Details/@item.KnjigaId" class="btn btn-primary">Details</a>
-        </td>
-        <td>
-            <a href="/Knjiga/Delete/@item.KnjigaId" class="btn btn-danger">Delete</a>
-        </td>
-    </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.InventarniBroj)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pisac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naslov)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GodinaIzdavanja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MestoIzdavanja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zanr.Naziv)
+            </td>
+            <td>
+                <a href="/Knjiga/Izmeni/@item.KnjigaId" class="btn btn-warning">Edit</a>
+            </td>
+            <td>
+                <a href="/Knjiga/Details/@item.KnjigaId" class="btn btn-primary">Details</a>
+            </td>
+            <td>
+                <a href="/Knjiga/Delete/@item.KnjigaId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
     }
-
 </table>
