@@ -5,67 +5,147 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
-<a href="/Knjiga/Create" class="btn btn-warning">Dodaj novu knjigu</a>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.InventarniBroj)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Pisac)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Naslov)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GodinaIzdavanja)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MestoIzdavanja)
-        </th>
-        <th>
-            @*Html.DisplayNameFor(model => model.Zanr.Naziv)*@ Zanr
-        </th>
-        <th>
-        </th>
-        <th>
-        </th>
-        <th>
-        </th>
-    </tr>
+<div class="jumbotron">
+    <div class="container">
+        <h2>Knjige</h2><br />
+        <a href="/Knjiga/Create" class="btn btn-warning">Dodaj novu knjigu</a><br /><br />
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.InventarniBroj)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pisac)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Naslov)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GodinaIzdavanja)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MestoIzdavanja)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Zanr.Naziv)
-            </td>
-            <td>
-                <a href="/Knjiga/Izmeni/@item.KnjigaId" class="btn btn-warning">Edit</a>
-            </td>
-            <td>
-                <a href="/Knjiga/Details/@item.KnjigaId" class="btn btn-primary">Details</a>
-            </td>
-            <td>
-                <a href="/Knjiga/Delete/@item.KnjigaId" class="btn btn-danger">Delete</a>
-            </td>
-        </tr>
+        <input class="input-sm" type="text" id="knjiga_search" onkeyup="myFunction()" placeholder="Trazi..." title="Type in a name"><br /><br />
+        <div class="container">
+            <div class="radio">
+                <input id="check1" name="a" type="radio">
+                <label for="check1" class="radio-label">Invertarni broj</label>
+            </div>
+            <div class="radio">
+                <input id="check2" name="a" type="radio">
+                <label for="check2" class="radio-label">Pisac</label>
+            </div>
+            <div class="radio">
+                <input id="check3" name="a" type="radio">
+                <label for="check3" class="radio-label">Naslov Dela</label>
+            </div>
+            <div class="radio">
+                <input id="check4" name="a" type="radio">
+                <label for="check4" class="radio-label">Godina izdavanja</label>
+            </div>
+            <div class="radio">
+                <input id="check5" name="a" type="radio">
+                <label for="check5" class="radio-label">Mesto izdavanja</label>
+            </div>
+            <div class="radio">
+                <input id="check6" name="a" type="radio">
+                <label for="check6" class="radio-label">Zanr</label>
+            </div>
+        </div>
+
+        <br /><br /><table class="table table-responsive" id="knjiga_table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.InventarniBroj)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pisac)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Naslov)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GodinaIzdavanja)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MestoIzdavanja)
+                </th>
+                <th>
+                    @*Html.DisplayNameFor(model => model.Zanr.Naziv)*@ Zanr
+                </th>
+                <th>
+                </th>
+                <th>
+                </th>
+                <th>
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InventarniBroj)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pisac)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Naslov)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GodinaIzdavanja)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MestoIzdavanja)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Zanr.Naziv)
+                    </td>
+                    <td>
+                        <a href="/Knjiga/Izmeni/@item.KnjigaId" class="btn btn-warning">Edit</a>
+                    </td>
+                    <td>
+                        <a href="/Knjiga/Details/@item.KnjigaId" class="btn btn-primary">Details</a>
+                    </td>
+                    <td>
+                        <a href="/Knjiga/Delete/@item.KnjigaId" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<script>
+    function myFunction() {
+        var check1 = document.getElementById("check1");
+        var check2 = document.getElementById("check2");
+        var check3 = document.getElementById("check3");
+        var check4 = document.getElementById("check4");
+        var check5 = document.getElementById("check5");
+        var check6 = document.getElementById("check6");
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("knjiga_search");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("knjiga_table");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            if (check1.checked == true) {
+                td = tr[i].getElementsByTagName("td")[0];
+            }
+            else if (check2.checked == true) {
+                td = tr[i].getElementsByTagName("td")[1];
+            }
+            else if (check3.checked == true) {
+                td = tr[i].getElementsByTagName("td")[2];
+            }
+            else if (check4.checked == true) {
+                td = tr[i].getElementsByTagName("td")[3];
+            }
+            else if (check5.checked == true) {
+                td = tr[i].getElementsByTagName("td")[4];
+            }
+            else if (check6.checked == true) {
+                td = tr[i].getElementsByTagName("td")[5];
+            }
+            else {
+                td = tr[i].getElementsByTagName("td")[2]
+            }
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
     }
-</table>
+</script>
