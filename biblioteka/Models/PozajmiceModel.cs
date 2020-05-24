@@ -17,6 +17,11 @@ namespace WebApplication1.Models
         public int KnjigaId { get; set; }
 
         public DateTime DatumPozajmice { get; set; }
+     
         public DateTime? DatumVracanja { get; set; }
+
+        public virtual UcenikModel Ucenik { get; set; }
+
+        public virtual KnjigaModel Knjiga { get; set; }
     }
 }

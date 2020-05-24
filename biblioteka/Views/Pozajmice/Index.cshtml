@@ -12,12 +12,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.UcenikId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.KnjigaId)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.DatumPozajmice)
         </th>
         <th>
@@ -28,12 +22,8 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.UcenikId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.KnjigaId)
-        </td>
+        
+
         <td>
             @Html.DisplayFor(modelItem => item.DatumPozajmice)
         </td>
@@ -48,6 +38,16 @@
         </td>
         <td>
             <a href="/Pozajmice/Delete/@item.Id" class="btn btn-danger">Delete</a>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4">
+           Ucenik:  @item.Ucenik.Ime @item.Ucenik.Prezime @item.Ucenik.Razred @item.Ucenik.Odeljenje
+        </td>
+    </tr>
+    <tr>
+        <td colspan="4">
+            Knjiga: @item.Knjiga.KnjigaId    @item.Knjiga.Naslov @item.Knjiga.InventarniBroj
         </td>
     </tr>
 }
