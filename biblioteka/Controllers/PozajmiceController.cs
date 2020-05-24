@@ -12,8 +12,11 @@ namespace WebApplication1.Controllers
         // GET: Pozajmice
         public ActionResult Index()
         {
+            //var knjige = bdb.Knjiga.Include("Zanr").ToList();
             BibliotekaDB bdb = new BibliotekaDB();
-            var pozajmice = bdb.Pozajmice.ToList();
+
+            var pozajmice = bdb.Pozajmice.Include("Ucenik").Include("Knjiga").ToList();
+
             
             return View(pozajmice);
         }
@@ -27,6 +30,20 @@ namespace WebApplication1.Controllers
         // GET: Pozajmice/Create
         public ActionResult Create()
         {
+            BibliotekaDB bdb = new BibliotekaDB();
+
+            var ucenici = bdb.Ucenik.ToList();
+            var listaUcenika = new List<SelectListItem>();
+
+            ucenici.ForEach(z =>
+            {
+                string ucenikInfo = $"{z.Ime} {z.Prezime} {z.Razred} {z.Odeljenje}";
+                listaUcenika.Add(new SelectListItem() { Text = ucenikInfo, Value = z.UcenikID.ToString() });
+            });
+
+            ViewBag.ListaUcenika = listaUcenika;
+
+
             return View();
         }
 
