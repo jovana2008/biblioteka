@@ -9,9 +9,15 @@
 <div class="jumbotron">
     <div class="container">
         <h2>Knjige</h2><br />
-        <a href="/Knjiga/Create" class="btn btn-warning">Dodaj novu knjigu</a><br /><br />
+        <a href="/Knjiga/Create" class="btn btn-warning">Dodaj novu knjigu</a>
 
-        <input class="input-sm" type="text" id="knjiga_search" onkeyup="myFunction()" placeholder="Trazi..." title="Type in a name"><br /><br />
+        <div class="startContainer">
+            <div class="elementContainer">
+                <a href="#"><i class="material-icons">search</i></a>
+                <input class="input-sm search" type="text" id="knjiga_search" onkeyup="funkcijaTrazi()" placeholder="Trazi..." title="Type in a name" style="width: 100px;">
+            </div>
+        </div>
+
         <div class="container">
             <div class="radio">
                 <input id="check1" name="a" type="radio">
@@ -22,7 +28,7 @@
                 <label for="check2" class="radio-label">Pisac</label>
             </div>
             <div class="radio">
-                <input id="check3" name="a" type="radio">
+                <input id="check3" name="a" type="radio" checked="checked">
                 <label for="check3" class="radio-label">Naslov Dela</label>
             </div>
             <div class="radio">
@@ -104,7 +110,7 @@
 </div>
 
 <script>
-    function myFunction() {
+    function funkcijaTrazi() {
         var check1 = document.getElementById("check1");
         var check2 = document.getElementById("check2");
         var check3 = document.getElementById("check3");
