@@ -12,8 +12,6 @@ namespace WebApplication1.Controllers
     //[Route("knjiga")]
     public class KnjigaController : Controller
     {
-        // GET: Knjiga
-        [HttpGet]
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             /*BibliotekaDB bdb = new BibliotekaDB();
