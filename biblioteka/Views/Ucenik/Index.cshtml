@@ -1,69 +1,77 @@
-@model IEnumerable<WebApplication1.Models.UcenikModel>
+@model PagedList.IPagedList<WebApplication1.Models.UcenikModel>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "Ucenici";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>View</h2>
+<div class="jumbotron">
+    <div class="container">
+        <h2>Ucenici</h2>
+        <a href="/Ucenik/Create" class="btn btn-warning">Dodaj novog ucenika</a>
+    </div>
 
-<a href="/Ucenik/Create" class="btn btn-warning">Dodaj novog ucenika</a>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Ime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Prezime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GodinaRodjenja)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BrojUDnevniku)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Razred)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Odeljenje)
-        </th>
-        <th></th>
-        <th></th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <br /><br /><table class="table table-responsive">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Prezime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GodinaRodjenja)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BrojUDnevniku)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Razred)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Odeljenje)
-            </td>
-            <td>
-                <a href="/Ucenik/Edit/@item.UcenikID" class="btn btn-warning">Edit</a>
-            </td>
-            <td>
-                <a href="/Ucenik/Details/@item.UcenikID" class="btn btn-primary">Details</a>
-            </td>
-            <td>
-                <a href="/Ucenik/Delete/@item.UcenikID" class="btn btn-danger">Delete</a>
-            </td>
+            <th>
+                @Html.ActionLink("Ime", "Index", new { sortOrder = ViewBag.ImeSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Prezime", "Index", new { sortOrder = ViewBag.PrezimeSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Godina rodjenja", "Index", new { sortOrder = ViewBag.GodinacSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Broj u dnevniku", "Index", new { sortOrder = ViewBag.BrojSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Razred", "Index", new { sortOrder = ViewBag.RazredSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Odeljenje", "Index", new { sortOrder = ViewBag.OdeljenjeSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prezime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GodinaRodjenja)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BrojUDnevniku)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Razred)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Odeljenje)
+                </td>
+                <td>
+                    <a href="/Ucenik/Edit/@item.UcenikID" class="btn btn-warning">Edit</a>
+                </td>
+                <td>
+                    <a href="/Ucenik/Details/@item.UcenikID" class="btn btn-primary">Details</a>
+                </td>
+                <td>
+                    <a href="/Ucenik/Delete/@item.UcenikID" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>

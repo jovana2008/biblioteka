@@ -5,51 +5,57 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+
+<div class="jumbotron">
+    <div class="container">
+        <h2>Index</h2>
 
 
-<a href="/Pozajmice/Create" class="btn btn-warning">Create</a>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DatumPozajmice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DatumVracanja)
-        </th>
-        <th></th>
-    </tr>
+        <a href="/Pozajmice/Create" class="btn btn-warning">Create</a>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.DatumPozajmice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DatumVracanja)
+                </th>
+                <th></th>
+            </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        
+            @foreach (var item in Model)
+            {
+                <tr>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.DatumPozajmice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DatumVracanja)
-        </td>
-        <td>
-            <a href="/Pozajmice/Edit/@item.Id" class="btn btn-warning">Edit</a>
-        </td>
-        <td>
-            <a href="/Pozajmice/Details/@item.Id" class="btn btn-primary">Details</a>
-        </td>
-        <td>
-            <a href="/Pozajmice/Delete/@item.Id" class="btn btn-danger">Delete</a>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="4">
-           Ucenik:  @item.Ucenik.Ime @item.Ucenik.Prezime @item.Ucenik.Razred @item.Ucenik.Odeljenje
-        </td>
-    </tr>
-    <tr>
-        <td colspan="4">
-            Knjiga: @item.Knjiga.KnjigaId    @item.Knjiga.Naslov @item.Knjiga.InventarniBroj
-        </td>
-    </tr>
-}
 
-</table>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DatumPozajmice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DatumVracanja)
+                    </td>
+                    <td>
+                        <a href="/Pozajmice/Edit/@item.Id" class="btn btn-warning">Edit</a>
+                    </td>
+                    <td>
+                        <a href="/Pozajmice/Details/@item.Id" class="btn btn-primary">Details</a>
+                    </td>
+                    <td>
+                        <a href="/Pozajmice/Delete/@item.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        Ucenik:  @item.Ucenik.Ime @item.Ucenik.Prezime @item.Ucenik.Razred @item.Ucenik.Odeljenje
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        Knjiga: @item.Knjiga.KnjigaId    @item.Knjiga.Naslov @item.Knjiga.InventarniBroj
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

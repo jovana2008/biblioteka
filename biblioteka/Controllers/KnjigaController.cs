@@ -5,6 +5,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models;
+using PagedList;
 
 namespace WebApplication1.Controllers
 {
@@ -13,12 +14,66 @@ namespace WebApplication1.Controllers
     {
         // GET: Knjiga
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            BibliotekaDB bdb = new BibliotekaDB();
+            /*BibliotekaDB bdb = new BibliotekaDB();
             var knjige = bdb.Knjiga.Include("Zanr").ToList();
 
-            return View(knjige);
+            return View(knjige);*/
+            BibliotekaDB bdb = new BibliotekaDB();
+
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.PisacSortParm = String.IsNullOrEmpty(sortOrder) ? "pisac_desc" : "";
+            ViewBag.MestoSortParm = String.IsNullOrEmpty(sortOrder) ? "mesto_desc" : "";
+            ViewBag.ZanrSortParm = String.IsNullOrEmpty(sortOrder) ? "zanr_desc" : "";
+            ViewBag.GodinaSortParm = sortOrder == "Godina" ? "godina_desc" : "Godina";
+            var knjige = from k in bdb.Knjiga
+                           select k;
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                knjige = knjige.Where(k => k.Naslov.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    knjige = knjige.OrderByDescending(k => k.Naslov);
+                    break;
+                case "pisac_desc":
+                    knjige = knjige.OrderByDescending(k => k.Pisac);
+                    break;
+                case "mesto_desc":
+                    knjige = knjige.OrderByDescending(k => k.MestoIzdavanja);
+                    break;
+                case "zanr_desc":
+                    knjige = knjige.OrderByDescending(k => k.ZanrId);
+                    break;
+                case "Godina":
+                    knjige = knjige.OrderBy(k => k.GodinaIzdavanja);
+                    break;
+                case "godina_desc":
+                    knjige = knjige.OrderByDescending(k => k.GodinaIzdavanja);
+                    break;
+                default:
+                    knjige = knjige.OrderBy(s => s.Naslov);
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(knjige.ToPagedList(pageNumber, pageSize));
         }
 
         [HttpPost]
