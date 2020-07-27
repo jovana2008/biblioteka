@@ -5,67 +5,72 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<div class="jumbotron">
+    <div class="container">
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>KnjigaModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.InventarniBroj)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.InventarniBroj)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Pisac)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Pisac)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Naslov)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Naslov)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GodinaIzdavanja)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GodinaIzdavanja)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MestoIzdavanja)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MestoIzdavanja)
-        </dd>
-        <dt>
-            @*Html.DisplayNameFor(model => model.Zanr.Naziv)*@ Zanr
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Zanr.Naziv)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Da li si siguran da zelis da obrises knjigu:</h4>
+            </div>
+            <div class="col-md-2">
+                <h4>@Html.DisplayFor(model => model.Naslov) ?</h4>
+            </div>
         </div>
-    }
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    Invertarni broj:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.InventarniBroj)
+                </dd>
+
+                <dt>
+                    Pisac:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Pisac)
+                </dd>
+
+                <dt>
+                    Godina izdavanja:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.GodinaIzdavanja)
+                </dd>
+
+                <dt>
+                    Mesto izdavanja:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MestoIzdavanja)
+                </dd>
+                <dt>
+                    Zanr:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Zanr.Naziv)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <div>
+                        <input type="submit" value="Delete" class="btn btn-danger pull-right" />
+                    </div>
+                    <div>
+                        <a href="/Knjiga/" class="btn btn-primary">Nazad</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 </div>

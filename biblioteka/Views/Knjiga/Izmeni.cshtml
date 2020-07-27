@@ -11,73 +11,85 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>KnjigaModel</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.KnjigaId)
+    <div class="jumbotron">
+        <div class="row">
+            <h2>Izmeni podatke o knjizi</h2>
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.KnjigaId)
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label lbltxt">Inventarni Broj</label>
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.InventarniBroj, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.InventarniBroj, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.InventarniBroj, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.InventarniBroj, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.InventarniBroj, "", new { @class = "text-danger" })
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label lbltxt">Pisac</label>
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.Pisac, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Pisac, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label lbltxt">Naslov</label>
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.Naslov, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Naslov, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label lbltxt">Godina izdavanja</label>
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.GodinaIzdavanja, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.GodinaIzdavanja, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label lbltxt">Mesto izdavanja</label>
+                        <div class="col-md-12">
+                            @Html.EditorFor(model => model.MestoIzdavanja, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MestoIzdavanja, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label lbltxt">Zanr</label>
+                        <div class="col-md-12">
+                            @Html.DropDownListFor(m => m.ZanrId, (List<SelectListItem>)ViewBag.ListaZanrova, "--Selektuj zanr--", htmlAttributes: new { @class = "form-control dropdown" })
+
+                            @Html.ValidationMessageFor(model => model.ZanrId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <input type="submit" value="Save" class="btn btn-warning pull-right" />
+                </div>
+                <div>
+                    <a href="/Knjiga/" class="btn btn-primary">Nazad</a>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Pisac, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Pisac, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Pisac, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Naslov, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Naslov, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Naslov, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.GodinaIzdavanja, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.GodinaIzdavanja, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.GodinaIzdavanja, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.MestoIzdavanja, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.MestoIzdavanja, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.MestoIzdavanja, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ZanrId, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(m => m.ZanrId, (List<SelectListItem>)ViewBag.ListaZanrova, "--Selektuj zanr--")
-
-            @Html.ValidationMessageFor(model => model.ZanrId, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
-        </div>
-    </div>
-</div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

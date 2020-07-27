@@ -5,61 +5,65 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="jumbotron">
+    <div class="container">
 
-<div>
-    <h4>KnjigaModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.InventarniBroj)
-        </dt>
+        <div class="row">
+            <div class="col-md-2">
+                <h4>Podatci o knjizi:</h4>
+            </div>
+            <div class="col-md-2">
+                <h4>@Html.DisplayFor(model => model.Naslov)</h4>
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.InventarniBroj)
-        </dd>
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    Invertarni broj:
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Pisac)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.InventarniBroj)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Pisac)
-        </dd>
+                <dt>
+                    Pisac:
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Naslov)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Pisac)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Naslov)
-        </dd>
+                <dt>
+                    Godina izdavanja: 
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GodinaIzdavanja)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.GodinaIzdavanja)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.GodinaIzdavanja)
-        </dd>
+                <dt>
+                    Mesto izdavanja:
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MestoIzdavanja)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.MestoIzdavanja)
+                </dd>
+                <dt>
+                    Zanr:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Zanr.Naziv)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.MestoIzdavanja)
-        </dd>
-        <dt>
-            @*Html.DisplayNameFor(model => model.Zanr.Naziv)*@ Zanr
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Zanr.Naziv)
-        </dd>
-
-    </dl>
+            </dl>
+        </div>
+        <div class="form-group">
+            <div>
+                <a href="/Knjiga/" class="btn btn-primary">Nazad</a>
+            </div>
+        </div>
+    </div>
 </div>
-<a href="/Knjiga/Izmeni/@Model.KnjigaId" class="btn btn-warning">Edit</a>
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>

@@ -5,87 +5,85 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>UcenikModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Ime)
-        </dt>
+<div class="jumbotron">
+    <div class="container">
 
-        <dd>
-            @Html.DisplayFor(model => model.Ime)
-        </dd>
+        <div class="row">
+            <div class="col-md-2">
+                <h4>Podatci o uceniku:</h4>
+            </div>
+            <div class="col-md-2">
+                <h4>@Html.DisplayFor(model => model.Ime) @Html.DisplayFor(model => model.Prezime)</h4>
+            </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Prezime)
-        </dt>
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
 
-        <dd>
-            @Html.DisplayFor(model => model.Prezime)
-        </dd>
+                <dt>
+                    Godina rodnjenja:
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GodinaRodjenja)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.GodinaRodjenja)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.GodinaRodjenja)
-        </dd>
+                <dt>
+                    Broj u dnevniku:
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BrojUDnevniku)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BrojUDnevniku)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.BrojUDnevniku)
-        </dd>
+                <dt>
+                    Razred:
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Razred)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Razred)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Razred)
-        </dd>
+                <dt>
+                    Odeljenje:
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Odeljenje)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Odeljenje)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Odeljenje)
-        </dd>
+                <dt>
+                    Adresa:
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Adresa)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Adresa)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Adresa)
-        </dd>
+                <dt>
+                    Email:
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+                <dt>
+                    Telefon:
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefon)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Telefon)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Telefon)
-        </dd>
-
-    </dl>
+            </dl>
+        </div>
+        <div class="form-group">
+            <div>
+                <a href="/Ucenik/" class="btn btn-primary">Nazad</a>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.UcenikID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

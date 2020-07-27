@@ -8,12 +8,17 @@
 }
 
 <div class="jumbotron">
-    <div class="container">
+    <div class="form-group pull-left">
         <h2>Ucenici</h2>
-        <a href="/Ucenik/Create" class="btn btn-warning">Dodaj novog ucenika</a>
+    </div>
+    <div class="form-group pull-right">
+        @using (Html.BeginForm())
+        {
+            @Html.TextBox("searchString", "Trazi...", new { @class = "form-control txtbx" })
+        }
     </div>
 
-    <br /><br /><table class="table table-responsive">
+    <table class="table table-responsive list-group">
         <tr>
             <th>
                 @Html.ActionLink("Ime", "Index", new { sortOrder = ViewBag.ImeSortParm, currentFilter = ViewBag.CurrentFilter })
@@ -70,8 +75,13 @@
                 </td>
             </tr>
         }
-
     </table>
+    <div class="pull-right btncenter">
+        <a href="/Ucenik/Create" class="btn btn-warning">Dodaj novog ucenika</a>
+    </div>
+    <p>
+        <input type="submit" class="hidden" value="Search" />
+    </p>
     @Html.PagedListPager(Model, page => Url.Action("Index",
-new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 </div>
