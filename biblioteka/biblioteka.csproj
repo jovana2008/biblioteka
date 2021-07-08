@@ -56,6 +56,12 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -127,14 +133,19 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KnjigaController.cs" />
+    <Compile Include="Controllers\PozajmiceController.cs" />
     <Compile Include="Controllers\profilController.cs" />
     <Compile Include="Controllers\UcenikController.cs" />
+    <Compile Include="Controllers\ZanrController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BibliotekaDB.cs" />
+    <Compile Include="Models\keyAttribute.cs" />
     <Compile Include="Models\KnjigaModel.cs" />
+    <Compile Include="Models\PozajmiceModel.cs" />
     <Compile Include="Models\UcenikModel.cs" />
+    <Compile Include="Models\ZanrModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +153,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -157,8 +169,10 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\mainjs.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Slike\Fendt 960 Vario.jpg" />
+    <Content Include="Slike\navbarlogo.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -176,8 +190,22 @@
     <Content Include="Views\Home\Skola.cshtml" />
     <Content Include="Views\profil\ja.cshtml" />
     <Content Include="Views\Knjiga\Izmeni.cshtml" />
-    <Content Include="Views\Ucenik\NoviUcenik.cshtml" />
     <Content Include="Views\Knjiga\Index.cshtml" />
+    <Content Include="Views\Ucenik\Index.cshtml" />
+    <Content Include="Views\Ucenik\Create.cshtml" />
+    <Content Include="Views\Knjiga\Create.cshtml" />
+    <Content Include="Views\Knjiga\Delete.cshtml" />
+    <Content Include="Views\Knjiga\Details.cshtml" />
+    <Content Include="Views\Ucenik\Edit.cshtml" />
+    <Content Include="Views\Ucenik\Details.cshtml" />
+    <Content Include="Views\Ucenik\Delete.cshtml" />
+    <Content Include="Views\Zanr\Index.cshtml" />
+    <Content Include="Views\Zanr\Edit.cshtml" />
+    <Content Include="Views\Zanr\Details.cshtml" />
+    <Content Include="Views\Zanr\Delete.cshtml" />
+    <Content Include="Views\Zanr\Create.cshtml" />
+    <Content Include="Views\Pozajmice\Create.cshtml" />
+    <Content Include="Views\Pozajmice\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

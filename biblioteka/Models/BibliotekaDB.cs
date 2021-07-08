@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -12,6 +12,8 @@ namespace WebApplication1.Models
         { }
 
         public DbSet<KnjigaModel> Knjiga { get; set; }
-
+        public DbSet<UcenikModel> Ucenik { get; set; }
+        public DbSet<ZanrModel> Zanr { get; set; }
+        public DbSet<PozajmiceModel> Pozajmice { get; set; }
     }
 }

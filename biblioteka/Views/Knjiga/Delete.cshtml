@@ -1,0 +1,76 @@
+﻿@model WebApplication1.Models.KnjigaModel
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Da li si siguran da zelis da obrises knjigu:</h4>
+            </div>
+            <div class="col-md-2">
+                <h4>@Html.DisplayFor(model => model.Naslov) ?</h4>
+            </div>
+        </div>
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    Invertarni broj:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.InventarniBroj)
+                </dd>
+
+                <dt>
+                    Pisac:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Pisac)
+                </dd>
+
+                <dt>
+                    Godina izdavanja:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.GodinaIzdavanja)
+                </dd>
+
+                <dt>
+                    Mesto izdavanja:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MestoIzdavanja)
+                </dd>
+                <dt>
+                    Zanr:
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Zanr.Naziv)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <div>
+                        <input type="submit" value="Delete" class="btn btn-danger pull-right" />
+                    </div>
+                    <div>
+                        <a href="/Knjiga/" class="btn btn-primary">Nazad</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

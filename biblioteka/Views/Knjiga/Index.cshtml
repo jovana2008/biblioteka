@@ -1,33 +1,92 @@
-﻿@using WebApplication1.Models
-@model ICollection<KnjigaModel>
+﻿@model PagedList.IPagedList<WebApplication1.Models.KnjigaModel>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
 
 @{
-    ViewBag.Title = "KnjigeTabela";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>KnjigeTabela</h2>
 
-<table class="table table-responsive table-striped">
-    <tr>
-        <th>Naslov</th>
-        <th>Inv. Broj</th>
-        <th>Pisac</th>
-        <th>God. Izd.</th>
-        <th>Mesto izd.</th>
-        <th></th>
-    </tr>
-    @foreach (var knjiga in Model)
-    {
-    
-    <tr>
-        <td>@knjiga.Naslov</td>
-        <td>@knjiga.InventarniBroj</td>
-        <td>@knjiga.Pisac</td>
-        <td>@knjiga.GodinaIzdavanja</td>
-        <td>@knjiga.MestoIzdavanja</td>
-        <td><a href="/knjiga/izmeni/@knjiga.KnjigaId" class="btn btn-primary">Izmeni</a></td>
-    </tr>   
-    }
-</table>
+<div class="jumbotron">
+    <div class="form-group pull-left">
+        <h2>Knjige</h2>
+    </div>
+    <div class="form-group pull-right">
+        @using (Html.BeginForm())
+        {
+            @Html.TextBox("searchString", "Trazi...", new { @class = "form-control txtbx" })
+        }
+    </div>
 
+    <table class="table table-responsive list-group">
+        <tr>
+            <th>
+                @*Html.DisplayNameFor(model => model.InventarniBroj)*@Invertarni Broj
+            </th>
+            <th>
+                @Html.ActionLink("Pisac", "Index", new { sortOrder = ViewBag.PisacSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Naslov", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Godina izdavanja", "Index", new { sortOrder = ViewBag.GodinaSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Mesto izdavanja", "Index", new { sortOrder = ViewBag.MestoSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Zanr", "Index", new { sortOrder = ViewBag.ZanrSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+            </th>
+            <th>
+            </th>
+            <th>
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InventarniBroj)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pisac)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Naslov)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GodinaIzdavanja)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MestoIzdavanja)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Zanr.Naziv)
+                </td>
+                <td>
+                    <a href="/Knjiga/Izmeni/@item.KnjigaId" class="btn btn-warning">Izmeni</a>
+                </td>
+                <td>
+                    <a href="/Knjiga/Details/@item.KnjigaId" class="btn btn-primary">Detalji</a>
+                </td>
+                <td>
+                    <a href="/Knjiga/Delete/@item.KnjigaId" class="btn btn-danger">Izbrisi</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <div class="pull-right btncenter">
+        <a href="/Knjiga/Create" class="btn btn-warning">Dodaj novu knjigu</a>
+    </div>
+    <p>
+        <input type="submit" class="hidden" value="Search" />
+    </p>
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>

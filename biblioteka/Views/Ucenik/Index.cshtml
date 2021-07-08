@@ -1,0 +1,87 @@
+@model PagedList.IPagedList<WebApplication1.Models.UcenikModel>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Ucenici";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron">
+    <div class="form-group pull-left">
+        <h2>Ucenici</h2>
+    </div>
+    <div class="form-group pull-right">
+        @using (Html.BeginForm())
+        {
+            @Html.TextBox("searchString", "Trazi...", new { @class = "form-control txtbx" })
+        }
+    </div>
+
+    <table class="table table-responsive list-group">
+        <tr>
+            <th>
+                @Html.ActionLink("Ime", "Index", new { sortOrder = ViewBag.ImeSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Prezime", "Index", new { sortOrder = ViewBag.PrezimeSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Godina rodjenja", "Index", new { sortOrder = ViewBag.GodinacSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Broj u dnevniku", "Index", new { sortOrder = ViewBag.BrojSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Razred", "Index", new { sortOrder = ViewBag.RazredSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Odeljenje", "Index", new { sortOrder = ViewBag.OdeljenjeSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prezime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GodinaRodjenja)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BrojUDnevniku)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Razred)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Odeljenje)
+                </td>
+                <td>
+                    <a href="/Ucenik/Edit/@item.UcenikID" class="btn btn-warning">Edit</a>
+                </td>
+                <td>
+                    <a href="/Ucenik/Details/@item.UcenikID" class="btn btn-primary">Details</a>
+                </td>
+                <td>
+                    <a href="/Ucenik/Delete/@item.UcenikID" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <div class="pull-right btncenter">
+        <a href="/Ucenik/Create" class="btn btn-warning">Dodaj novog ucenika</a>
+    </div>
+    <p>
+        <input type="submit" class="hidden" value="Search" />
+    </p>
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>
